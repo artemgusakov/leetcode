@@ -7,6 +7,7 @@ import java.util.Stack;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
+ * <a href="https://leetcode.com/problems/valid-parentheses/description/">Task on leetcode</a>
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
  * <p>
  * An input string is valid if:
@@ -35,10 +36,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * 1 <= s.length <= 104
  * s consists of parentheses only '()[]{}'.
  */
-public class ValidBracketsTest {
+public class ValidBrackets {
     @Test
-    public void check() {
-        ValidBracketsSolution service = new ValidBracketsSolution();
+    public void testSolution() {
+        ValidBrackets service = new ValidBrackets();
         assertThat(service.isValid("()")).isTrue();
         assertThat(service.isValid("()[]{}")).isTrue();
         assertThat(service.isValid("([)]")).isFalse();
@@ -47,8 +48,7 @@ public class ValidBracketsTest {
         assertThat(service.isValid("(){}}{")).isFalse();
         assertThat(service.isValid("){}{}")).isFalse();
     }
-}
-class ValidBracketsSolution {
+
     public boolean isValid(String s) {
 
         if (s.length() % 2 != 0) {

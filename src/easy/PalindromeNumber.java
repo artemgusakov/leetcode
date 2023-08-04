@@ -1,11 +1,15 @@
 package easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 /**
- * <a href="https://leetcode.com/problems/palindrome-number">Task</a>
+ * <a href="https://leetcode.com/problems/palindrome-number">Task on leetcode</a>
  * Given an integer x, return true if x is a palindrome, and false otherwise.
  * <p>
  * Example 1:
@@ -25,13 +29,15 @@ import java.util.Objects;
  */
 public class PalindromeNumber {
 
-    public static void main(String[] args) {
-        System.out.println(new PalindromeNumber().isPalindrome(121));
-//        System.out.println(new PalindromeNumber().isPalindrome(-121));
-//        System.out.println(new PalindromeNumber().isPalindrome(10));
-//        System.out.println(new PalindromeNumber().isPalindrome(5));
-//        System.out.println(new PalindromeNumber().isPalindrome(1234554321));
-//        System.out.println(new PalindromeNumber().isPalindrome(123454321));
+    @Test
+    void testSolution() {
+        PalindromeNumber solution = new PalindromeNumber();
+        assertThat(solution.isPalindrome(121)).isTrue();
+        assertThat(solution.isPalindrome(-121)).isFalse();
+        assertThat(solution.isPalindrome(10)).isFalse();
+        assertThat(solution.isPalindrome(5)).isTrue();
+        assertThat(solution.isPalindrome(1234554321)).isTrue();
+        assertThat(solution.isPalindrome(123454321)).isTrue();
     }
 
     public boolean isPalindrome(int x) {
@@ -57,4 +63,6 @@ public class PalindromeNumber {
         }
         return true;
     }
+
 }
+

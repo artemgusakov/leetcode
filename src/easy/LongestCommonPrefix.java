@@ -1,5 +1,9 @@
 package easy;
 
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 /**
  * Write a function to find the longest common prefix string amongst an array of strings.
  * <p>
@@ -23,10 +27,15 @@ package easy;
  */
 public class LongestCommonPrefix {
 
-    public static void main(String[] args) {
-        System.out.println("the longest prefix is = " + new LongestCommonPrefix().longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
-        System.out.println("the longest prefix is = " + new LongestCommonPrefix().longestCommonPrefix(new String[]{"flower", "flow", "flow"}));
-        System.out.println("the longest prefix is = " + new LongestCommonPrefix().longestCommonPrefix(new String[]{"", "flow", "flow"}));
+    @Test
+    void testSolution() {
+        LongestCommonPrefix solution = new LongestCommonPrefix();
+        assertThat(solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"}))
+                .isEmpty();
+        assertThat(solution.longestCommonPrefix(new String[]{"flower", "flow", "flow"}))
+                .isEqualTo("flow");
+        assertThat(solution.longestCommonPrefix(new String[]{"", "flow", "flow"}))
+                .isEmpty();
     }
 
     public String longestCommonPrefix(String[] strs) {
@@ -38,8 +47,7 @@ public class LongestCommonPrefix {
                 String currentWord = strs[wordIndex];
                 if (firstWordLetterIndex < currentWord.length() && checkingLetter == currentWord.charAt(firstWordLetterIndex)) {
                     matchesCount++;
-                }
-                else {
+                } else {
                     break;
                 }
             }

@@ -1,7 +1,6 @@
 package medium;
-
 /**
- * https://leetcode.com/problems/add-two-numbers/description/?source=submission-ac
+ * <a href="https://leetcode.com/problems/add-two-numbers/description/?source=submission-ac">Task on leetcode</a>
  * You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order, and each of their nodes contains a single digit.
  * Add the two numbers and return the sum as a linked list.
@@ -17,13 +16,29 @@ package medium;
  * 0 <= Node.val <= 9
  * It is guaranteed that the list represents a number that does not have leading zeros.
  */
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class AddTwoNumbers {
 
-    public static void main(String[] args) {
+    @Test
+    void testSolution() {
         ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9)))))));
         ListNode l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
         AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
-        ListNode listNode = addTwoNumbers.addTwoNumbers(l1, l2);
+        ListNode result = addTwoNumbers.addTwoNumbers(l1, l2);
+        assertThat(result).usingRecursiveComparison().isEqualTo(
+            new ListNode(8,
+                new ListNode(9,
+                    new ListNode(9,
+                        new ListNode(9,
+                            new ListNode(0,
+                                new ListNode(0,
+                                    new ListNode(0,
+                                        new ListNode(1))))))))
+        );
     }
 
     private ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -51,8 +66,7 @@ public class AddTwoNumbers {
                 currentNode = node;
                 l1 = l1.next;
                 l2 = l2.next;
-            }
-            else if (l1 != null) {
+            } else if (l1 != null) {
                 int r = l1.val + carry;
                 if (r >= 10) {
                     node.val = r - 10;
@@ -86,43 +100,43 @@ public class AddTwoNumbers {
         }
         return resultRootNode;
     }
-}
 
-class ListNode {
-    int val;
-    ListNode next;
+    static class ListNode {
+        int val;
+        ListNode next;
 
-    ListNode() {
-    }
+        ListNode() {
+        }
 
-    ListNode(int val) {
-        this.val = val;
-    }
+        ListNode(int val) {
+            this.val = val;
+        }
 
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
 
 /**
  * THE BEST SOLUTION
  * public medium.ListNode addTwoNumbers(medium.ListNode l1, medium.ListNode l2) {
- *         medium.ListNode dummyHead = new medium.ListNode(0);
- *         medium.ListNode curr = dummyHead;
- *         int carry = 0;
- *         while (l1 != null || l2 != null || carry != 0) {
- *             int x = (l1 != null) ? l1.val : 0;
- *             int y = (l2 != null) ? l2.val : 0;
- *             int sum = carry + x + y;
- *             carry = sum / 10;
- *             curr.next = new medium.ListNode(sum % 10);
- *             curr = curr.next;
- *             if (l1 != null)
- *                 l1 = l1.next;
- *             if (l2 != null)
- *                 l2 = l2.next;
- *         }
- *         return dummyHead.next;
- *     }
- * */
+ * medium.ListNode dummyHead = new medium.ListNode(0);
+ * medium.ListNode curr = dummyHead;
+ * int carry = 0;
+ * while (l1 != null || l2 != null || carry != 0) {
+ * int x = (l1 != null) ? l1.val : 0;
+ * int y = (l2 != null) ? l2.val : 0;
+ * int sum = carry + x + y;
+ * carry = sum / 10;
+ * curr.next = new medium.ListNode(sum % 10);
+ * curr = curr.next;
+ * if (l1 != null)
+ * l1 = l1.next;
+ * if (l2 != null)
+ * l2 = l2.next;
+ * }
+ * return dummyHead.next;
+ * }
+ */
