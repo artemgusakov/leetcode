@@ -1,9 +1,14 @@
 package easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 /**
+ * <a href="https://leetcode.com/problems/roman-to-integer/">Task on leetcode</a>
  * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
  * <p>
  * Symbol       Value
@@ -30,11 +35,12 @@ import java.util.Map;
  * Given a roman numeral, convert it to an integer.
  */
 public class RomanToInteger {
-
-    public static void main(String[] args) {
-        System.out.println(new RomanToInteger().romanToInt("XXXIX"));
-        System.out.println(new RomanToInteger().romanToInt("XCIX"));
-        System.out.println(new RomanToInteger().romanToInt("III"));
+    @Test
+    void testSolution() {
+        RomanToInteger solution = new RomanToInteger();
+        assertThat(solution.romanToInt("XXXIX")).isEqualTo(39);
+        assertThat(solution.romanToInt("XCIX")).isEqualTo(99);
+        assertThat(solution.romanToInt("III")).isEqualTo(3);
     }
 
     public int romanToInt(String s) {
@@ -51,11 +57,11 @@ public class RomanToInteger {
         for (int i = 0; i < s.length(); i++) {
             char currentChar = s.charAt(i);
             Character nextChar = i < s.length() - 1 ? s.charAt(i + 1) : null;
-            if(currentChar == 'I') {
+            if (currentChar == 'I') {
                 if (nextChar != null && nextChar == 'V') {
                     result += 4;
                     i = i + 1;
-                } else if (nextChar != null && nextChar == 'X'){
+                } else if (nextChar != null && nextChar == 'X') {
                     result += 9;
                     i = i + 1;
                 } else {
@@ -65,7 +71,7 @@ public class RomanToInteger {
                 if (nextChar != null && nextChar == 'L') {
                     result += 40;
                     i = i + 1;
-                } else if (nextChar != null && nextChar == 'C'){
+                } else if (nextChar != null && nextChar == 'C') {
                     result += 90;
                     i = i + 1;
                 } else {
@@ -75,7 +81,7 @@ public class RomanToInteger {
                 if (nextChar != null && nextChar == 'D') {
                     result += 400;
                     i = i + 1;
-                } else if (nextChar != null && nextChar == 'M'){
+                } else if (nextChar != null && nextChar == 'M') {
                     result += 900;
                     i = i + 1;
                 } else {
@@ -87,5 +93,4 @@ public class RomanToInteger {
         }
         return result;
     }
-
 }

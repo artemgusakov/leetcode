@@ -1,6 +1,11 @@
 package easy;
 
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 /**
+ * <a href="https://leetcode.com/problems/ugly-number/">Task on leetcode</a>
  * An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.
  * <p>
  * Given an integer n, return true if n is an ugly number.
@@ -24,8 +29,14 @@ package easy;
 
 public class UglyNumber {
 
-    public static void main(String[] args) {
-        System.out.println(new UglyNumber().isUgly(-14));
+    @Test
+    void testSolution() {
+        UglyNumber uglyNumber = new UglyNumber();
+        assertThat(uglyNumber.isUgly(-14)).isFalse();
+        assertThat(uglyNumber.isUgly(14)).isFalse();
+        assertThat(uglyNumber.isUgly(1)).isTrue();
+        assertThat(uglyNumber.isUgly(6)).isTrue();
+
     }
 
     public boolean isUgly(int n) {
