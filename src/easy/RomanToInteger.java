@@ -35,13 +35,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * Given a roman numeral, convert it to an integer.
  */
 public class RomanToInteger {
-    @Test
-    void testSolution() {
-        RomanToInteger solution = new RomanToInteger();
-        assertThat(solution.romanToInt("XXXIX")).isEqualTo(39);
-        assertThat(solution.romanToInt("XCIX")).isEqualTo(99);
-        assertThat(solution.romanToInt("III")).isEqualTo(3);
-    }
 
     public int romanToInt(String s) {
         Map<String, Integer> romanToIntMap = new HashMap<>();
@@ -92,5 +85,13 @@ public class RomanToInteger {
             }
         }
         return result;
+    }
+
+    @Test
+    void testSolution() {
+        RomanToInteger solution = new RomanToInteger();
+        assertThat(solution.romanToInt("XXXIX")).isEqualTo(39);
+        assertThat(solution.romanToInt("XCIX")).isEqualTo(99);
+        assertThat(solution.romanToInt("III")).isEqualTo(3);
     }
 }

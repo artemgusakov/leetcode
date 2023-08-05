@@ -1,4 +1,9 @@
 package medium;
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * <a href="https://leetcode.com/problems/add-two-numbers/description/?source=submission-ac">Task on leetcode</a>
  * You are given two non-empty linked lists representing two non-negative integers.
@@ -16,30 +21,7 @@ package medium;
  * 0 <= Node.val <= 9
  * It is guaranteed that the list represents a number that does not have leading zeros.
  */
-
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class AddTwoNumbers {
-
-    @Test
-    void testSolution() {
-        ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9)))))));
-        ListNode l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
-        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
-        ListNode result = addTwoNumbers.addTwoNumbers(l1, l2);
-        assertThat(result).usingRecursiveComparison().isEqualTo(
-            new ListNode(8,
-                new ListNode(9,
-                    new ListNode(9,
-                        new ListNode(9,
-                            new ListNode(0,
-                                new ListNode(0,
-                                    new ListNode(0,
-                                        new ListNode(1))))))))
-        );
-    }
 
     private ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode resultRootNode = new ListNode(l1.val + l2.val);
@@ -99,6 +81,24 @@ public class AddTwoNumbers {
             }
         }
         return resultRootNode;
+    }
+
+    @Test
+    void testSolution() {
+        ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9)))))));
+        ListNode l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
+        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+        ListNode result = addTwoNumbers.addTwoNumbers(l1, l2);
+        assertThat(result).usingRecursiveComparison().isEqualTo(
+            new ListNode(8,
+                new ListNode(9,
+                    new ListNode(9,
+                        new ListNode(9,
+                            new ListNode(0,
+                                new ListNode(0,
+                                    new ListNode(0,
+                                        new ListNode(1))))))))
+        );
     }
 
     static class ListNode {

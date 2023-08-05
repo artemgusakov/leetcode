@@ -23,14 +23,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  */
 public class TwoSum {
 
-    @Test
-    void testSolution() {
-        TwoSum twoSum = new TwoSum();
-        assertThat(twoSum.twoSum(new int[]{2, 5, 5, 11}, 10)).isEqualTo(new int[]{1, 2});
-        assertThat(twoSum.twoSum(new int[]{2, 7, 11, 15}, 9)).isEqualTo(new int[]{0, 1});
-        assertThat(twoSum.twoSum(new int[]{2, 3, 4}, 6)).isEqualTo(new int[]{0, 2});
-    }
-
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i <= nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -40,5 +32,13 @@ public class TwoSum {
             }
         }
         return null;
+    }
+
+    @Test
+    void testSolution() {
+        TwoSum twoSum = new TwoSum();
+        assertThat(twoSum.twoSum(new int[]{2, 5, 5, 11}, 10)).isEqualTo(new int[]{1, 2});
+        assertThat(twoSum.twoSum(new int[]{2, 7, 11, 15}, 9)).isEqualTo(new int[]{0, 1});
+        assertThat(twoSum.twoSum(new int[]{2, 3, 4}, 6)).isEqualTo(new int[]{0, 2});
     }
 }

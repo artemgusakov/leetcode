@@ -29,17 +29,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  */
 public class PalindromeNumber {
 
-    @Test
-    void testSolution() {
-        PalindromeNumber solution = new PalindromeNumber();
-        assertThat(solution.isPalindrome(121)).isTrue();
-        assertThat(solution.isPalindrome(-121)).isFalse();
-        assertThat(solution.isPalindrome(10)).isFalse();
-        assertThat(solution.isPalindrome(5)).isTrue();
-        assertThat(solution.isPalindrome(1234554321)).isTrue();
-        assertThat(solution.isPalindrome(123454321)).isTrue();
-    }
-
     public boolean isPalindrome(int x) {
 
         if (x < 0) {
@@ -63,6 +52,18 @@ public class PalindromeNumber {
         }
         return true;
     }
+
+    @Test
+    void testSolution() {
+        PalindromeNumber solution = new PalindromeNumber();
+        assertThat(solution.isPalindrome(121)).isTrue();
+        assertThat(solution.isPalindrome(-121)).isFalse();
+        assertThat(solution.isPalindrome(10)).isFalse();
+        assertThat(solution.isPalindrome(5)).isTrue();
+        assertThat(solution.isPalindrome(1234554321)).isTrue();
+        assertThat(solution.isPalindrome(123454321)).isTrue();
+    }
+
 
 }
 

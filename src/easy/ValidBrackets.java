@@ -37,17 +37,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * s consists of parentheses only '()[]{}'.
  */
 public class ValidBrackets {
-    @Test
-    public void testSolution() {
-        ValidBrackets service = new ValidBrackets();
-        assertThat(service.isValid("()")).isTrue();
-        assertThat(service.isValid("()[]{}")).isTrue();
-        assertThat(service.isValid("([)]")).isFalse();
-        assertThat(service.isValid("([]())")).isTrue();
-        assertThat(service.isValid("([{}])")).isTrue();
-        assertThat(service.isValid("(){}}{")).isFalse();
-        assertThat(service.isValid("){}{}")).isFalse();
-    }
 
     public boolean isValid(String s) {
 
@@ -60,7 +49,7 @@ public class ValidBrackets {
         for (int i = 0; i < s.length(); i++) {
             char currentBracket = s.charAt(i);
             if (stack.empty()
-                    && (currentBracket == ')' || currentBracket == ']' || currentBracket == '}')) {
+                && (currentBracket == ')' || currentBracket == ']' || currentBracket == '}')) {
                 return false;
             }
             if (currentBracket == '(' || currentBracket == '[' || currentBracket == '{') {
@@ -77,6 +66,18 @@ public class ValidBrackets {
             }
         }
         return stack.empty();
+    }
+
+    @Test
+    public void testSolution() {
+        ValidBrackets service = new ValidBrackets();
+        assertThat(service.isValid("()")).isTrue();
+        assertThat(service.isValid("()[]{}")).isTrue();
+        assertThat(service.isValid("([)]")).isFalse();
+        assertThat(service.isValid("([]())")).isTrue();
+        assertThat(service.isValid("([{}])")).isTrue();
+        assertThat(service.isValid("(){}}{")).isFalse();
+        assertThat(service.isValid("){}{}")).isFalse();
     }
 
 }

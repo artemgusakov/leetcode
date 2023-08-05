@@ -36,17 +36,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MergeTwoSortedLists {
 
-    @ParameterizedTest
-    @MethodSource("provideData")
-    void testSolution(ListNode list1, ListNode list2, ListNode expectedResult) {
-        MergeTwoSortedLists solution = new MergeTwoSortedLists();
-        assertThat(solution.mergeTwoLists(list1, list2))
-            .usingRecursiveComparison()
-            .isEqualTo(expectedResult);
-    }
-
-    ListNode root = new ListNode();
-
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         if (list1 == null && list2 == null) {
@@ -90,6 +79,15 @@ public class MergeTwoSortedLists {
         return head.next;
     }
 
+    @ParameterizedTest
+    @MethodSource("provideData")
+    void testSolution(ListNode list1, ListNode list2, ListNode expectedResult) {
+        MergeTwoSortedLists solution = new MergeTwoSortedLists();
+        assertThat(solution.mergeTwoLists(list1, list2))
+            .usingRecursiveComparison()
+            .isEqualTo(expectedResult);
+    }
+
     public static Stream<Arguments> provideData() {
         return Stream.of(
             Arguments.of(null, null, null),
@@ -112,7 +110,6 @@ public class MergeTwoSortedLists {
             )
         );
     }
-
 
     static class ListNode {
         int val;
