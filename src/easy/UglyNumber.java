@@ -29,16 +29,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class UglyNumber {
 
-    @Test
-    void testSolution() {
-        UglyNumber uglyNumber = new UglyNumber();
-        assertThat(uglyNumber.isUgly(-14)).isFalse();
-        assertThat(uglyNumber.isUgly(14)).isFalse();
-        assertThat(uglyNumber.isUgly(1)).isTrue();
-        assertThat(uglyNumber.isUgly(6)).isTrue();
-
-    }
-
     public boolean isUgly(int n) {
 
         if (n < 0) {
@@ -62,4 +52,14 @@ public class UglyNumber {
         }
         return n == 1;
     }
+
+    @Test
+    void testSolution() {
+        UglyNumber uglyNumber = new UglyNumber();
+        assertThat(uglyNumber.isUgly(-14)).isFalse();
+        assertThat(uglyNumber.isUgly(14)).isFalse();
+        assertThat(uglyNumber.isUgly(1)).isTrue();
+        assertThat(uglyNumber.isUgly(6)).isTrue();
+    }
+
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
+ * <a href="https://leetcode.com/problems/longest-common-prefix/">Task on leetcode</a>
  * Write a function to find the longest common prefix string amongst an array of strings.
  * <p>
  * If there is no common prefix, return an empty string "".
@@ -27,17 +28,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  */
 public class LongestCommonPrefix {
 
-    @Test
-    void testSolution() {
-        LongestCommonPrefix solution = new LongestCommonPrefix();
-        assertThat(solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"}))
-                .isEmpty();
-        assertThat(solution.longestCommonPrefix(new String[]{"flower", "flow", "flow"}))
-                .isEqualTo("flow");
-        assertThat(solution.longestCommonPrefix(new String[]{"", "flow", "flow"}))
-                .isEmpty();
-    }
-
     public String longestCommonPrefix(String[] strs) {
         StringBuilder result = new StringBuilder();
         for (int firstWordLetterIndex = 0; firstWordLetterIndex < strs[0].length(); firstWordLetterIndex++) {
@@ -58,6 +48,17 @@ public class LongestCommonPrefix {
             }
         }
         return result.toString();
+    }
+
+    @Test
+    void testSolution() {
+        LongestCommonPrefix solution = new LongestCommonPrefix();
+        assertThat(solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"}))
+            .isEmpty();
+        assertThat(solution.longestCommonPrefix(new String[]{"flower", "flow", "flow"}))
+            .isEqualTo("flow");
+        assertThat(solution.longestCommonPrefix(new String[]{"", "flow", "flow"}))
+            .isEmpty();
     }
 
 }
