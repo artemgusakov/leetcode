@@ -1,4 +1,4 @@
-package easy;
+package easy.binarytree;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +25,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>
  * Input: root = [1]
  * Output: [1]
+ * <p>
+ * Pre-order, NLR
+ * Visit the current node (in the figure: position red).
+ * Recursively traverse the current node's left subtree.
+ * Recursively traverse the current node's right subtree.
+ * The pre-order traversal is a topologically sorted one,
+ * because a parent node is processed before any of its child nodes is done.
  */
 public class BinaryTreePreorderTraversal {
 
@@ -76,7 +83,7 @@ public class BinaryTreePreorderTraversal {
             new TreeNode(3, new TreeNode(1), new TreeNode(2)))).isEqualTo(List.of(3, 1, 2));
     }
 
-    class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
