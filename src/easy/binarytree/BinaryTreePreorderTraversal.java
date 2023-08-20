@@ -82,23 +82,4 @@ public class BinaryTreePreorderTraversal {
         assertThat(solution.preorderTraversalStack(
             new TreeNode(3, new TreeNode(1), new TreeNode(2)))).isEqualTo(List.of(3, 1, 2));
     }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
