@@ -36,7 +36,7 @@ public class SameTree {
         }
 
         while ((!pStack.empty() && !qStack.empty()) || p != null || q != null) {
-            //on every step checking that both p and q have or haven't value
+            //on every step checking that both p and q have or haven't a value
             if ((p == null && q != null) || (p != null && q == null)) {
                 return false;
             }
